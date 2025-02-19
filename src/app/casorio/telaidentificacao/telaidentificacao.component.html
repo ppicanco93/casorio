@@ -1,0 +1,14 @@
+<div class="container">
+    <form class="form">
+        <mat-form-field class="full-width">
+          <mat-label>Nome Completo ou Número do Convite</mat-label>
+          <input matInput #message maxlength="256">
+        </mat-form-field>
+        <div class="button-container">
+            <button mat-fab extended (click)="logMessage(message)">
+                <mat-icon>login</mat-icon>
+                Enviar
+            </button>
+        </div>
+    </form>
+</div>

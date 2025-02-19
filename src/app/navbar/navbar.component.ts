@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -11,5 +12,12 @@ import {MatToolbarModule} from '@angular/material/toolbar';
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent {
+
+  constructor(private readonly router: Router) {}
+
+  logout() {
+    localStorage.removeItem('numero_convite'); // Clear the local storage item
+    this.router.navigate(['/']); // Navigate to the root route
+  }
 
 }

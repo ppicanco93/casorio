@@ -34,8 +34,8 @@ export class TelaidentificacaoComponent implements OnInit{
   logMessage(messageInput: HTMLInputElement) {
     this.conviteService.checkConvite(messageInput.value).subscribe(
       response => {
-        if (response) {
-          localStorage.setItem('numero_convite', messageInput.value);
+        if (response !== "0") {
+          localStorage.setItem('numero_convite', response ?? '');
           this.router.navigate(['/lista-de-presentes']);
         } else {
           alert("Convite não encontrado. Por favor, verifique o nome ou número do convite.")

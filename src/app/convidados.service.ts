@@ -3,6 +3,7 @@ import { Inject, Injectable } from '@angular/core';
 import { Convite } from './shared/models/convite';
 import { map, Observable } from 'rxjs';
 import { Presente } from './shared/models/presente';
+import { Convidados } from './shared/models/convidados';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +32,18 @@ export class ConvidadosService {
         map(response => response ? response.map(item => new Presente(item)) : [])
       )
   }
+
+  getConvidadosPorConvite(idConvite: string): Observable<Convidados[]> {
+    return this.http.get<Convidados[]>(`${this.baseUrl}/convidados?id_convite=${idConvite}`)
+    .pipe(
+      map(response => response ? response.map(item => new Convidados(item)) : [])
+    )
+  }
+
+  updateConvidado(convidado: any): Observable<any> { // Adjust return type as needed
+    return this.http.post(`${this.baseUrl}/update-convidado`, convidado);
+  }
+
 
 
 

@@ -1,1 +1,9 @@
-<p>confirmacao works!</p>
+<div class="container">
+    <h2>Confirmação de Presença</h2>
+    <div *ngFor="let convidado of convidados">
+        <app-form-confirmacao [name]="convidado.nome_convidado" [vegetariano]="convidado.vegano == 'true'" [confirmation]="convidado.status" [id]="convidado.id"></app-form-confirmacao>
+    </div>
+    <div class="button-raised">
+        <button mat-raised-button (click)="logConfirmationData()">Enviar</button>
+    </div>
+</div>

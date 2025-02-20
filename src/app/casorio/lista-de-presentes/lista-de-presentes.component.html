@@ -1,1 +1,12 @@
-<p>lista-de-presentes works!</p>
+<div class="container wrap center">
+    <div *ngFor="let presente of presentes">
+        <app-card-presente 
+          [imageUrl]="presente.link_imagem" 
+          [title]="presente.nome_presente" 
+          [description]="presente.descricao"
+          [valor]="presente.valor"
+          [linkpix]="presente.link_pix">
+        </app-card-presente>
+      </div>
+      
+</div>

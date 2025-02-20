@@ -1,0 +1,19 @@
+<!-- card-presente.component.html -->
+<mat-card class="example-card" appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>{{ title }}</mat-card-title>
+    </mat-card-header>
+    <img class="img-presente center" mat-card-image src="{{ imageUrl }}" alt="{{ title }}"> 
+    <mat-card-content>
+        <mat-card-title class="center">{{ valor | currency: 'BRL' }}</mat-card-title>
+
+      <p>
+        {{ description }}
+      </p>
+    </mat-card-content>
+    <mat-card-actions class="center">
+        <a href="{{ linkpix }}">
+            <button mat-raised-button  onclick="console.log('Presenteado')">Presentear</button>
+        </a>
+    </mat-card-actions>
+  </mat-card>

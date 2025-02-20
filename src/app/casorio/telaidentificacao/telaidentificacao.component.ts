@@ -6,6 +6,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatButtonModule} from '@angular/material/button';
 import { Router } from '@angular/router';
+import { ConvidadosService } from '../../convidados.service';
 
 @Component({
   selector: 'app-telaidentificacao',
@@ -16,19 +17,31 @@ import { Router } from '@angular/router';
 })
 export class TelaidentificacaoComponent implements OnInit{
 
-  constructor(private readonly router: Router) {} // Inject Router
+  constructor(private readonly router: Router,
+    private readonly conviteService: ConvidadosService
+  ) {} // Inject Router
 
   ngOnInit(): void {
-    const storedConvite = localStorage.getItem('numero_convite');
-    console.log(storedConvite);
-    if (storedConvite === '1234') {
-      this.router.navigate(['/lista-de-presentes']);
-    }
+    this.conviteService.checkConvite(localStorage.getItem('numero_convite') ?? '').subscribe(
+      response => {
+        if (response) {
+          this.router.navigate(['/lista-de-presentes']);
+        }
+      }
+    )
   }
 
   logMessage(messageInput: HTMLInputElement) {
-    localStorage.setItem('numero_convite', messageInput.value);
-    messageInput.value = ''; // Clear the input value
+    this.conviteService.checkConvite(messageInput.value).subscribe(
+      response => {
+        if (response) {
+          localStorage.setItem('numero_convite', messageInput.value);
+          this.router.navigate(['/lista-de-presentes']);
+        } else {
+          alert("Convite não encontrado. Por favor, verifique o nome ou número do convite.")
+        }
+      }
+    )
   }
 
 }

@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConvidadosService } from '../../convidados.service';
-import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-  selector: 'app-informacoes-evento',
-  imports: [MatButtonModule],
-  templateUrl: './informacoes-evento.component.html',
-  styleUrl: './informacoes-evento.component.scss'
+  selector: 'app-sobre-nos',
+  imports: [],
+  templateUrl: './sobre-nos.component.html',
+  styleUrl: './sobre-nos.component.scss'
 })
-export class InformacoesEventoComponent implements OnInit {
+export class SobreNosComponent {
 
     constructor(private readonly router: Router,
       private readonly conviteService: ConvidadosService

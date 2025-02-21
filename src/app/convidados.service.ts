@@ -4,6 +4,7 @@ import { Convite } from './shared/models/convite';
 import { map, Observable } from 'rxjs';
 import { Presente } from './shared/models/presente';
 import { Convidados } from './shared/models/convidados';
+import { Mensagem } from './shared/models/mensagem';
 
 @Injectable({
   providedIn: 'root'
@@ -48,8 +49,15 @@ export class ConvidadosService {
     return this.http.post(`${this.baseUrl}/update-convidado`, convidado);
   }
 
+  mandarMensagem(info_presente: any): Observable<any> { // Adjust return type as needed
+    return this.http.post(`${this.baseUrl}/create-message`, info_presente);
+  }
 
-
-
+  getMensagens(): Observable<Mensagem[]> {  // Method to get all Mensagens
+    return this.http.get<Mensagem[]>(`${this.baseUrl}/mensagens`)
+      .pipe(
+        map(response => response ? response.map(item => new Mensagem(item)) : [])
+      )
+  }
 
 }

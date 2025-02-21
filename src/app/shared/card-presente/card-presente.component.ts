@@ -14,6 +14,7 @@ import {
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { Router } from '@angular/router';
+import { ConvidadosService } from '../../convidados.service';
 
 @Component({
   selector: 'app-card-presente',
@@ -29,6 +30,8 @@ export class CardPresenteComponent {
   @Input() description: string = '';
   @Input() valor: string = '';
   @Input() linkpix: string = '';
+  @Input() idPresente: string = '';
+
 
 
 
@@ -38,7 +41,9 @@ export class CardPresenteComponent {
   openDialog() {
     this.dialog.open(DialogDataExampleDialog, {
       data: {
-        linkpix: this.linkpix
+        linkpix: this.linkpix,
+        idPresente: this.idPresente,
+        nomePresente: this.title
       },
       width: '400px',
     });
@@ -63,15 +68,26 @@ export class CardPresenteComponent {
 export class DialogDataExampleDialog {
   data = inject(MAT_DIALOG_DATA);
   mensagem: string = '';
+  name: string = '';
+
 
   constructor(
     public dialogRef: MatDialogRef<DialogDataExampleDialog>,
-    private readonly router: Router) { }
+    private readonly router: Router,
+          private readonly conviteService: ConvidadosService) { }
 
   mandarMensagem() {
-    console.log(this.mensagem);
-    console.log(this.data.linkpix);
-    window.open(this.data.linkpix, '_blank');
-    this.router.navigate(['/mural-de-mensagens'])
+    this.conviteService.mandarMensagem({
+      nome: this.name,
+      mensagem: this.mensagem,
+      id_presente: this.data.idPresente,
+      id_convite: localStorage.getItem('numero_convite') ?? ''
+    }
+    ).subscribe(
+      response => {
+        window.open(this.data.linkpix, '_blank');
+        this.router.navigate(['/mural-de-mensagens'])
+      }
+    )
   }
 }

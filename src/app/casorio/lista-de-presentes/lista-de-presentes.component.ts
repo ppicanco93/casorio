@@ -22,20 +22,26 @@ export class ListaDePresentesComponent  implements OnInit {
     ) {}
   
     ngOnInit(): void {
-      this.conviteService.checkConvite(localStorage.getItem('numero_convite') ?? '').subscribe(
+
+      this.conviteService.getPresentes().subscribe(
         response => {
-          if (!response) {
-            this.router.navigate(['/']);
-          }
-          else{
-            this.conviteService.getPresentes().subscribe(
-              response => {
-                this.presentes = response;
-              }
-            )
-          }
+          this.presentes = response;
         }
       )
+      // this.conviteService.checkConvite(localStorage.getItem('numero_convite') ?? '').subscribe(
+      //   response => {
+      //     if (!response) {
+      //       this.router.navigate(['/']);
+      //     }
+      //     else{
+      //       this.conviteService.getPresentes().subscribe(
+      //         response => {
+      //           this.presentes = response;
+      //         }
+      //       )
+      //     }
+      //   }
+      // )
     }
 
 }

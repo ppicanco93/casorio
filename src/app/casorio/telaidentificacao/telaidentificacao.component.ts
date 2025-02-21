@@ -35,17 +35,19 @@ export class TelaidentificacaoComponent implements OnInit {
     this.conviteService.checkConvite(messageInput.value).subscribe(
       response => {
         if (response !== "0") {
+          var id_convite = response ?? '';
+          localStorage.setItem('numero_convite', id_convite);
           const today = new Date();
           const targetDate = new Date('2025-04-26');
           if (today.getFullYear() === targetDate.getFullYear() &&
                     today.getMonth() === targetDate.getMonth() &&
                     today.getDate() === targetDate.getDate() + 1 ) {
-                  localStorage.setItem('numero_convite', messageInput.value);
+                  localStorage.setItem('numero_convite', id_convite);
                   this.router.navigate(['/informacoes-evento']);
           } else {
-            this.conviteService.checkStatus(messageInput.value).subscribe(
+            this.conviteService.checkStatus(localStorage.getItem('numero_convite') ?? '').subscribe(
               response => {
-                localStorage.setItem('numero_convite', messageInput.value);
+                localStorage.setItem('numero_convite', localStorage.getItem('numero_convite') ?? '');
                 if (response) {
                   this.router.navigate(['/lista-de-presentes']);
                 }

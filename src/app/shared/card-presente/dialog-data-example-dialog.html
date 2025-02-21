@@ -1,0 +1,10 @@
+<mat-dialog-content>
+  <p>Mande uma mensagem para nós!</p>
+  <mat-form-field style="margin: auto; width: 95%;">
+    <mat-label>Mande uma mensagem</mat-label>
+    <textarea matInput [(ngModel)]="mensagem" rows="12"></textarea>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions style="margin: auto;">
+    <button mat-raised-button (click)="mandarMensagem()"  [mat-dialog-close]="" cdkFocusInitial>Presentear</button>
+</mat-dialog-actions>

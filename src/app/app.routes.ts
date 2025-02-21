@@ -18,6 +18,10 @@ export const routes: Routes = [
         loadComponent: () => import('./casorio/informacoes-evento/informacoes-evento.component').then(m => m.InformacoesEventoComponent),
     },
     {
+        path: 'mural-de-mensagens',
+        loadComponent: () => import('./casorio/mural-de-mensagens/mural-de-mensagens.component').then(m => m.MuralDeMensagensComponent),
+    },
+    {
         path: '**',
         redirectTo: '/lista-de-presentes'
     }

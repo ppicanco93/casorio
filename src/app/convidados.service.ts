@@ -26,6 +26,10 @@ export class ConvidadosService {
     return this.http.get<string>(`${this.baseUrl}/check-convite?nome_ou_id_convite=${value.trim()}`)
   }
 
+  checkStatus(value: string): Observable<string | null> {
+    return this.http.get<string>(`${this.baseUrl}/check-status?id_convite=${value.trim()}`)
+  }
+
   getPresentes(): Observable<Presente[]> {  // Method to get all Presentes
     return this.http.get<Presente[]>(`${this.baseUrl}/lista-presentes`)
       .pipe(

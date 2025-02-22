@@ -5,3 +5,10 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 /* Importing Bootstrap SCSS file. */
+h1 {
+    color: var(--mat-sys-secondary);
+}
+mat-card-title {
+    color: var(--mat-sys-secondary);
+    margin: auto;
+}

@@ -85,8 +85,8 @@ export class DialogDataExampleDialog {
     }
     ).subscribe(
       response => {
-        window.open(this.data.linkpix, '_blank');
-        this.router.navigate(['/mural-de-mensagens'])
+        location.href = this.data.linkpix;
+        // this.router.navigate(['/mural-de-mensagens'])
       }
     )
   }

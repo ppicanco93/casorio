@@ -139,8 +139,7 @@ ul li .descr {
 }
 
 /* shadows */
-ul li .title::before,
-ul li .descr::before {
+ul li .title::before{
   content: "";
   position: absolute;
   width: 90%;
@@ -158,6 +157,11 @@ ul li .title::before {
 ul li .descr::before {
   z-index: -1;
   bottom: 0.25rem;
+}
+
+.img {
+  width: 250px;
+  margin: auto; 
 }
 
 @media (min-width: 40rem) {

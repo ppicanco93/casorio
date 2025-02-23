@@ -11,7 +11,7 @@ import { Mensagem } from './shared/models/mensagem';
 })
 export class ConvidadosService {
 
-  private readonly baseUrl = 'https://isabellaepedro.space'; // Or your full API URL e.g., 'http://your-api-url/convite'
+  private readonly baseUrl = 'https://isabellaepedro.space/api'; // Or your full API URL e.g., 'http://your-api-url/convite'
 
   constructor(@Inject(HttpClient) public http: HttpClient) {
   }

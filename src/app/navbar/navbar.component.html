@@ -6,30 +6,25 @@
     </button>
     
     <img class="navbar-brand" src="https://i.imgur.com/xQrKJ7d.png" alt="">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+    <button  (click)="logout()"  class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <mat-icon>logout</mat-icon>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" href="./lista-de-presentes">Lista de Presentes</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="./confirmacao">Confirmação</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="./informacoes-evento">Informações Evento</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="./mural-de-mensagens">Mural de Mensagens</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="./sobre-nos">Sobre Nós</a>
-        </li>
-      </ul>
-        <div class="button-container">
-          <button mat-button (click)="logout()">Logout</button>
-        </div>
+    <div class="menu-container" *ngIf="currentRoute !== '/'">
+      <div class="menu-item" *ngIf="currentRoute !== '/lista-de-presentes'">
+        <a href="./lista-de-presentes"><button mat-raised-button>Presentes</button></a>
+      </div>
+      <div class="menu-item"  *ngIf="currentRoute !== '/confirmacao'">
+        <a href="./confirmacao"><button mat-raised-button>Confirmação</button></a>
+      </div>
+      <div class="menu-item"  *ngIf="currentRoute !== '/informacoes-evento'">
+        <a href="./informacoes-evento"><button mat-raised-button>Informações</button></a>
+      </div>
+      <div class="menu-item"  *ngIf="currentRoute !== '/sobre-nos'">
+        <a href="./sobre-nos"><button mat-raised-button>Sobre Nós</button></a>
+      </div>
+      <div class="menu-item" id="logout-lg">
+        <button mat-button (click)="logout()">Logout</button>
+      </div>
     </div>
   </div>
 </nav>

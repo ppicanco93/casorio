@@ -2,6 +2,7 @@
 .confirmation-card {
     min-width: 350px;
     max-width: 500px; /* Or a suitable width */
+    height: 180px;
     margin: 20px auto; /* Center the card */
     box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
                 0px 1px 1px 0px rgba(0, 0, 0, 0.14),
@@ -35,7 +36,6 @@
     position: absolute;
     top: 50px; /* Adjust top positioning as needed */
     right: 20px; /* Adjust right positioning as needed */
-    width: 110px; /* Adjust size as needed */
     height: 110px; /* Adjust size as needed */
 }
   

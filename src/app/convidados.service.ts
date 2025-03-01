@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
-import { Convite } from './shared/models/convite';
 import { map, Observable } from 'rxjs';
 import { Presente } from './shared/models/presente';
 import { Convidados } from './shared/models/convidados';
@@ -16,12 +15,6 @@ export class ConvidadosService {
   constructor(@Inject(HttpClient) public http: HttpClient) {
   }
 
-  getConvites(): Observable<Convite[]> {  // Method to get all convites
-    return this.http.get<Convite[]>(`${this.baseUrl}/convites`)
-      .pipe(
-        map(response => response ? response.map(item => new Convite(item)) : [])
-      )
-  }
 
   checkConvite(value: string): Observable<string | null> {
     return this.http.get<string>(`${this.baseUrl}/check-convite?nome_ou_id_convite=${value.trim()}`)
@@ -40,6 +33,13 @@ export class ConvidadosService {
 
   getConvidadosPorConvite(idConvite: string): Observable<Convidados[]> {
     return this.http.get<Convidados[]>(`${this.baseUrl}/convidados?id_convite=${idConvite}`)
+    .pipe(
+      map(response => response ? response.map(item => new Convidados(item)) : [])
+    )
+  }
+
+  getConvidados(): Observable<Convidados[]> {
+    return this.http.get<Convidados[]>(`${this.baseUrl}/todos-convidados`)
     .pipe(
       map(response => response ? response.map(item => new Convidados(item)) : [])
     )

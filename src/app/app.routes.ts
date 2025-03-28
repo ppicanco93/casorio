@@ -30,6 +30,10 @@ export const routes: Routes = [
         loadComponent: () => import('./casorio/tabela-convidados/tabela-convidados.component').then(m => m.TabelaConvidadosComponent),
     },
     {
+        path: ':idConvite',
+        loadComponent: () => import('./casorio/linklogin/linklogin.component').then(m => m.LinkloginComponent),
+    },
+    {
         path: '**',
         redirectTo: '/lista-de-presentes'
     }
